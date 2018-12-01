@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -31,6 +32,7 @@ public class Pessoa implements Serializable {
 	private Character sexo;
 	private Date dtNascimento;
 	private String email;
+	@JsonBackReference
 	@OneToOne(mappedBy = "pessoa")
 	private Usuario usuario;
 	@JsonManagedReference
