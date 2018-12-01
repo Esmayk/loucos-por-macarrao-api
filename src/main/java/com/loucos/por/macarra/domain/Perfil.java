@@ -14,19 +14,18 @@ import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-
 @Entity
 public class Perfil implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String descricao;
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "perfil_usuario", joinColumns = @JoinColumn(name = "id_perfil"), inverseJoinColumns = @JoinColumn(name = "id_usuario"))
-	@JsonBackReference
 	private List<Usuario> usuarios = new ArrayList<>();
 
 	public Perfil() {
