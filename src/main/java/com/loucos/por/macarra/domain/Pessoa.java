@@ -14,9 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -32,9 +30,6 @@ public class Pessoa implements Serializable {
 	private Character sexo;
 	private Date dtNascimento;
 	private String email;
-	@JsonBackReference
-	@OneToOne(mappedBy = "pessoa")
-	private Usuario usuario;
 	@JsonManagedReference
 	@OneToMany(mappedBy = "pessoa")
 	private List<Endereco> enderecos = new ArrayList<>();
@@ -45,7 +40,7 @@ public class Pessoa implements Serializable {
 	public Pessoa() {
 	}
 
-	public Pessoa(Long id, String nome, String cpf, Character sexo, Date dtNascimento, String email, Usuario usuario) {
+	public Pessoa(Long id, String nome, String cpf, Character sexo, Date dtNascimento, String email) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -53,7 +48,6 @@ public class Pessoa implements Serializable {
 		this.sexo = sexo;
 		this.dtNascimento = dtNascimento;
 		this.email = email;
-		this.usuario = usuario;
 	}
 
 	public Long getId() {
@@ -104,14 +98,6 @@ public class Pessoa implements Serializable {
 		this.email = email;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	
 	public List<Endereco> getEnderecos() {
 		return enderecos;
 	}
