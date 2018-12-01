@@ -25,7 +25,9 @@ public class Perfil implements Serializable {
 	private String descricao;
 	@JsonBackReference
 	@ManyToMany
-	@JoinTable(name = "perfil_usuario", joinColumns = @JoinColumn(name = "id_perfil"), inverseJoinColumns = @JoinColumn(name = "id_usuario"))
+	@JoinTable(name = "perfil_usuario",
+	joinColumns = @JoinColumn(name = "id_perfil"),
+	inverseJoinColumns = @JoinColumn(name = "id_usuario"))
 	private List<Usuario> usuarios = new ArrayList<>();
 
 	public Perfil() {
