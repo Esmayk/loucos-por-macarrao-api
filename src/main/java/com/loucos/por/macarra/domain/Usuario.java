@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Usuario implements Serializable {
@@ -33,6 +34,7 @@ public class Usuario implements Serializable {
 	private boolean ativo;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ultimoAcesso;
+	@JsonManagedReference
 	@OneToOne
 	@JoinColumn(name = "id_pessoa")
 	private Pessoa pessoa;
