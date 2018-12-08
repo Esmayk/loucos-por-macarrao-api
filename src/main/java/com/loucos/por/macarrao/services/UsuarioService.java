@@ -1,4 +1,4 @@
-package com.loucos.por.macarra.services;
+package com.loucos.por.macarrao.services;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -6,12 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.loucos.por.macarra.domain.Perfil;
-import com.loucos.por.macarra.domain.Usuario;
-import com.loucos.por.macarra.repositories.EnderecoRepository;
-import com.loucos.por.macarra.repositories.PerfilRepository;
-import com.loucos.por.macarra.repositories.PessoaRepository;
-import com.loucos.por.macarra.repositories.UsuarioRepository;
+import com.loucos.por.macarrao.domain.Perfil;
+import com.loucos.por.macarrao.domain.Usuario;
+import com.loucos.por.macarrao.repositories.EnderecoRepository;
+import com.loucos.por.macarrao.repositories.PerfilRepository;
+import com.loucos.por.macarrao.repositories.PessoaRepository;
+import com.loucos.por.macarrao.repositories.UsuarioRepository;
 
 @Service
 public class UsuarioService {

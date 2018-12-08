@@ -1,4 +1,4 @@
-package com.loucos.por.macarra.domain;
+package com.loucos.por.macarrao.domain;
 
 import java.io.Serializable;
 

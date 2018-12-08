@@ -1,9 +1,9 @@
-package com.loucos.por.macarra.repositories;
+package com.loucos.por.macarrao.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.loucos.por.macarra.domain.Perfil;
+import com.loucos.por.macarrao.domain.Perfil;
 
 @Repository
 public interface PerfilRepository extends JpaRepository<Perfil, Long> {
