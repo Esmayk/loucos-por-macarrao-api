@@ -1,5 +1,7 @@
 package com.loucos.por.macarrao.resources;
 
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +25,7 @@ public class UsuarioResource {
 	
 	@ApiOperation(value = "Salva um novo usuário do sistema.")
 	@RequestMapping(value="/salvar", method = RequestMethod.POST)
-	public ResponseEntity<?> find(@RequestBody Usuario usuario) {
+	public ResponseEntity<?> find(@RequestBody Usuario usuario) throws NoSuchAlgorithmException {
 		return ResponseEntity.ok(usuarioService.salvarUsuario(usuario));
 	}
 }
