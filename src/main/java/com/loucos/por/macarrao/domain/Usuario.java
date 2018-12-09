@@ -1,9 +1,7 @@
 package com.loucos.por.macarrao.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,18 +26,25 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	private String login;
+
 	private String senha;
+
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	private boolean ativo;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ultimoAcesso;
-	@OneToOne
-	@JoinColumn(name = "id_pessoa")
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "pessoa_id", referencedColumnName = "id", nullable = false)
 	private Pessoa pessoa;
+
 	@JsonBackReference
-	@ManyToMany(mappedBy = "usuarios", cascade = CascadeType.ALL)
-	private List<Perfil> perfis = new ArrayList<>();
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "perfil_id", referencedColumnName = "id", nullable = false)
+	private Perfil perfil;
 
 	public Usuario() {
 	}
@@ -102,12 +107,12 @@ public class Usuario implements Serializable {
 		this.pessoa = pessoa;
 	}
 
-	public List<Perfil> getPerfis() {
-		return perfis;
+	public Perfil getPerfil() {
+		return perfil;
 	}
 
-	public void setPerfis(List<Perfil> perfis) {
-		this.perfis = perfis;
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
 	@Override
