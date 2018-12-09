@@ -1,14 +1,10 @@
 package com.loucos.por.macarrao.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,17 +21,24 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String nome;
+	
 	private String cpf;
+	
 	private Character sexo;
+	
 	private Date dtNascimento;
+	
 	private String email;
+	
 	@JsonManagedReference
-	@OneToMany(mappedBy = "pessoa")
-	private List<Endereco> enderecos = new ArrayList<>();
-	@ElementCollection
-	@CollectionTable(name = "telefone")
-	private Set<String> telefones = new HashSet<>();
+	@OneToMany(cascade= CascadeType.ALL, mappedBy = "pessoa")
+	private List<Endereco> enderecos;
+	
+	@JsonManagedReference
+	@OneToMany(cascade= CascadeType.ALL, mappedBy = "pessoa")
+	private List<Telefone> telefones;
 	
 	public Pessoa() {
 	}
@@ -106,11 +109,11 @@ public class Pessoa implements Serializable {
 		this.enderecos = enderecos;
 	}
 
-	public Set<String> getTelefones() {
+	public List<Telefone> getTelefones() {
 		return telefones;
 	}
 
-	public void setTelefones(Set<String> telefones) {
+	public void setTelefones(List<Telefone> telefones) {
 		this.telefones = telefones;
 	}
 
